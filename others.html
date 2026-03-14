@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Others | Sumaiya Akter</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+.info-grid{display:flex;flex-direction:column;}
+.info-row{display:flex;gap:0;padding:11px 0;border-bottom:1px solid var(--border);font-size:14px;align-items:baseline;}
+.info-row:first-child{border-top:1px solid var(--border);}
+.info-k{color:var(--muted);min-width:130px;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;}
+.info-v{color:#111;font-size:14px;line-height:1.5;}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:4px;}
+.doc-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:all .25s;}
+.doc-card:hover{border-color:var(--teal);box-shadow:var(--shadow);transform:translateY(-2px);}
+.doc-icon{font-size:28px;flex-shrink:0;}
+.doc-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.doc-sub{font-size:12px;color:var(--muted);}
+.doc-arr{margin-left:auto;font-size:18px;color:var(--teal);}
+.score-wrap{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px 28px;}
+.score-big{font-family:'DM Serif Display',serif;font-size:64px;color:var(--navy);line-height:1;text-align:center;}
+.score-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:700;display:block;margin-top:2px;text-align:center;}
+.score-bars{display:flex;flex-direction:column;gap:10px;}
+.sb-row{display:flex;align-items:center;gap:10px;}
+.sb-name{font-size:12.5px;font-weight:600;color:var(--navy);min-width:82px;}
+.sb-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.sb-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:3px;}
+.sb-val{font-size:12.5px;font-weight:700;color:var(--navy);min-width:22px;text-align:right;}
+.visa-card{background:linear-gradient(135deg,var(--navy) 0%,#1a3f62 100%);border-radius:14px;padding:28px 30px;color:#fff;position:relative;overflow:hidden;max-width:400px;}
+.visa-card::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);}
+.visa-type{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:6px;}
+.visa-cat{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;line-height:1;margin-bottom:4px;}
+.visa-validity{font-size:13px;color:rgba(255,255,255,.65);}
+.visa-name{font-size:15px;font-weight:700;color:#fff;margin-top:18px;}
+.visa-note{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px;}
+</style>
+</head>
+<body><nav id="main-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Sumaiya <span>Akter</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="others.html">Others</a></li>
+      <li><a href="#contact-footer" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mob-nav">
+  <button class="mob-close" id="mob-close">✕</button>
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="publications.html" onclick="closeMob()">Publications</a>
+  <a href="experience.html" onclick="closeMob()">Experience</a>
+  <a href="gallery.html" onclick="closeMob()">Gallery</a>
+  <a href="others.html" onclick="closeMob()">Others</a>
+  <a href="#contact-footer" onclick="closeMob()">Contact</a>
+</div>
+<div class="page-hero">
+  <span class="eyebrow">Documents &amp; More</span>
+  <h1>Others</h1>
+  <p>Personal information, academic documents, English proficiency, and visa details.</p>
+</div>
+
+<section class="content-sec">
+  <div class="container reveal">
+    <span class="sec-label">Personal Information</span>
+    <h2 class="sec-title">Contact Details</h2>
+    <div class="divider"></div>
+    <div class="info-grid" style="max-width:640px;">
+      <div class="info-row"><span class="info-k">Location</span><span class="info-v">Miami, Florida 33172, USA</span></div>
+      <div class="info-row"><span class="info-k">Employer</span><span class="info-v">Streams Tech Ltd (USA) — Remote</span></div>
+      <div class="info-row"><span class="info-k">Email</span><span class="info-v"><a href="mailto:sumaiyaakterfairuz@gmail.com" style="color:var(--teal);">sumaiyaakterfairuz@gmail.com</a></span></div>
+      <div class="info-row"><span class="info-k">Phone (USA)</span><span class="info-v">+1 786-622-5568</span></div>
+      <div class="info-row"><span class="info-k">Phone (BD)</span><span class="info-v">+88 0152-132-8382</span></div>
+      <div class="info-row"><span class="info-k">Visa</span><span class="info-v">F-2 Visa · Valid 2024–2029</span></div>
+      <div class="info-row"><span class="info-k">Goal</span><span class="info-v">Seeking MS/PhD in Civil or Environmental Engineering</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="content-sec">
+  <div class="container reveal">
+    <span class="sec-label">Academic Transcripts</span>
+    <h2 class="sec-title">Academic Documents</h2>
+    <div class="divider"></div>
+    <div class="doc-grid">
+      <a class="doc-card" href="https://drive.google.com/file/d/1MI2icKH0HjhbBQGcdUBIY2zqZGPrtLtc/view" target="_blank">
+        <div class="doc-icon">🎓</div>
+        <div><div class="doc-title">BSc Certificate</div><div class="doc-sub">Civil &amp; Water Resources Engineering · MIST/BUP</div></div>
+        <span class="doc-arr">↗</span>
+      </a>
+      <a class="doc-card" href="https://drive.google.com/file/d/1xvTsey8z-l5x7gT-630faaS5V-diZSzL/view" target="_blank">
+        <div class="doc-icon">📋</div>
+        <div><div class="doc-title">BSc Transcript</div><div class="doc-sub">Official academic record · Session 2016–2020</div></div>
+        <span class="doc-arr">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="content-sec">
+  <div class="container reveal">
+    <span class="sec-label">Test Score</span>
+    <h2 class="sec-title">IELTS — International English Language Testing System</h2>
+    <div class="divider"></div>
+    <div class="score-wrap" style="max-width:520px;">
+      <div>
+        <div class="score-big">6.5</div>
+        <div class="score-lbl">Overall Band</div>
+      </div>
+      <div class="score-bars">
+        <div class="sb-row"><span class="sb-name">Listening</span><div class="sb-track"><div class="sb-fill" style="width:calc(7.5/9*100%)"></div></div><span class="sb-val">7.5</span></div>
+        <div class="sb-row"><span class="sb-name">Reading</span><div class="sb-track"><div class="sb-fill" style="width:calc(7.0/9*100%)"></div></div><span class="sb-val">7.0</span></div>
+        <div class="sb-row"><span class="sb-name">Writing</span><div class="sb-track"><div class="sb-fill" style="width:calc(6.0/9*100%)"></div></div><span class="sb-val">6.0</span></div>
+        <div class="sb-row"><span class="sb-name">Speaking</span><div class="sb-track"><div class="sb-fill" style="width:calc(6.0/9*100%)"></div></div><span class="sb-val">6.0</span></div>
+      </div>
+    </div>
+    <div style="margin-top:18px;">
+      <a class="doc-card" style="max-width:300px;display:flex;" href="https://drive.google.com/file/d/1m1PuFGqLi1xLFn-AFMlfKrr4eZmjffcj/view" target="_blank">
+        <div class="doc-icon">📜</div>
+        <div><div class="doc-title">IELTS Certificate</div><div class="doc-sub">Click to view official certificate</div></div>
+        <span class="doc-arr">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="content-sec">
+  <div class="container reveal">
+    <span class="sec-label">US Visa</span>
+    <h2 class="sec-title">Visa Status</h2>
+    <div class="divider"></div>
+    <div class="visa-card">
+      <div class="visa-type">Non-immigrant Visa</div>
+      <div class="visa-cat">F-2</div>
+      <div class="visa-validity">Valid: 2024 – 2029</div>
+      <div class="visa-name">Sumaiya Akter (Fairuz)</div>
+      <div class="visa-note">Dependent of F-1 visa holder · USA</div>
+    </div>
+  </div>
+</section>
+<section class="contact-footer" id="contact-footer">
+  <div class="container reveal">
+    <span class="sec-label">Contact</span>
+    <h2 class="sec-title">Get in Touch</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div>
+        <p style="font-size:15px;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:28px;max-width:380px;">Open to graduate research opportunities, collaborations, and professional connections in civil and environmental engineering.</p>
+        <div class="ci"><div class="ci-icon">📍</div><div><span class="ci-lbl">Address</span><div class="ci-val">10817 NW 7th St, Miami, FL 33172, USA</div></div></div>
+        <div class="ci"><div class="ci-icon">📧</div><div><span class="ci-lbl">Email</span><div class="ci-val"><a href="mailto:sumaiyaakterfairuz@gmail.com">sumaiyaakterfairuz@gmail.com</a></div></div></div>
+        <div class="ci"><div class="ci-icon">📞</div><div><span class="ci-lbl">Phone (USA)</span><div class="ci-val">+1 786-622-5568</div></div></div>
+        <div class="ci"><div class="ci-icon">📞</div><div><span class="ci-lbl">Phone (BD)</span><div class="ci-val">+88 0152-132-8382</div></div></div>
+        <div class="ci"><div class="ci-icon">🔬</div><div><span class="ci-lbl">ResearchGate</span><div class="ci-val"><a href="https://www.researchgate.net/profile/Sumaiya-Akter-39" target="_blank">Sumaiya-Akter-39 ↗</a></div></div></div>
+      </div>
+      <div>
+        <div class="cform">
+          <div class="fg"><label>Your Name</label><input type="text" id="cn" placeholder="Full name"></div>
+          <div class="fg"><label>Email</label><input type="email" id="ce" placeholder="your@email.com"></div>
+          <div class="fg"><label>Subject</label><input type="text" id="cs" placeholder="Research inquiry, collaboration…"></div>
+          <div class="fg"><label>Message</label><textarea id="cm" placeholder="Write your message…"></textarea></div>
+          <button class="form-btn" onclick="sendMsg()">Send Message →</button>
+          <div class="form-ok" id="form-ok">✓ Message sent! Sumaiya will get back to you soon.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    © 2025 Sumaiya Akter · Civil &amp; Water Resources Engineer · Miami, FL, USA &nbsp;·&nbsp;
+    <a href="index.html">Home</a> &nbsp;·&nbsp;
+    <a href="publications.html">Publications</a> &nbsp;·&nbsp;
+    <a href="experience.html">Experience</a> &nbsp;·&nbsp;
+    <a href="gallery.html">Gallery</a>
+  </div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

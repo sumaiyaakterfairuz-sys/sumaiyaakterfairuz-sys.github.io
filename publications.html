@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications | Sumaiya Akter</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ── SHARED STYLES ─────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:#222;line-height:1.7;overflow-x:hidden;}
+
+:root{
+  --navy:#0f2942;
+  --blue:#2563a8;
+  --teal:#0e7490;
+  --teal-lt:#22a7c7;
+  --teal-pale:#e8f6fa;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --bg2:#f8fafc;
+  --bg3:#f1f5f9;
+  --nav-h:60px;
+  --shadow:0 4px 18px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.1);
+  --r:10px;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);transition:box-shadow .3s;}
+nav.scrolled{box-shadow:var(--shadow);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:18px;color:var(--navy);text-decoration:none;}
+.nav-logo span{color:var(--teal);}
+.nav-links{display:flex;gap:2px;list-style:none;}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 13px;border-radius:7px;transition:all .2s;}
+.nav-links a:hover{color:var(--navy);background:var(--bg3);}
+.nav-links a.active{color:var(--teal);font-weight:700;}
+.nav-cta{background:var(--navy)!important;color:#fff!important;font-weight:600!important;border-radius:7px;}
+.nav-cta:hover{opacity:.88;}
+.burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.burger span{width:22px;height:2px;background:var(--navy);border-radius:2px;display:block;}
+.mob-nav{display:none;position:fixed;inset:0;z-index:99;background:rgba(15,41,66,.97);flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{font-family:'DM Serif Display',serif;font-size:28px;color:rgba(255,255,255,.85);text-decoration:none;padding:10px;}
+.mob-close{position:absolute;top:20px;right:24px;background:none;border:none;color:rgba(255,255,255,.5);font-size:32px;cursor:pointer;}
+
+/* PAGE HERO (non-home pages) */
+.page-hero{background:var(--navy);padding:calc(var(--nav-h)+52px) 0 52px;text-align:center;}
+.page-hero .eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:8px;}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,46px);color:#fff;margin-bottom:10px;}
+.page-hero p{font-size:15px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto;}
+
+/* SECTIONS */
+section.content-sec{padding:80px 0;}
+section.content-sec:nth-of-type(even){background:var(--bg2);}
+.container{max-width:1100px;margin:0 auto;padding:0 32px;}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:8px;}
+h2.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,32px);color:var(--navy);margin-bottom:8px;line-height:1.2;}
+.divider{width:36px;height:3px;background:var(--teal);border-radius:2px;margin:12px 0 36px;}
+
+/* CONTACT FOOTER SECTION */
+.contact-footer{background:var(--navy);padding:72px 0 0;}
+.contact-footer .sec-label{color:rgba(255,255,255,.4);}
+.contact-footer h2.sec-title{color:#fff;}
+.contact-footer .divider{background:rgba(255,255,255,.2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;padding-bottom:60px;}
+.ci{display:flex;align-items:flex-start;gap:13px;margin-bottom:18px;}
+.ci-icon{width:40px;height:40px;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.ci-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.38);display:block;margin-bottom:2px;}
+.ci-val{font-size:14px;color:rgba(255,255,255,.8);font-weight:500;}
+.ci-val a{color:rgba(255,255,255,.8);text-decoration:none;}
+.ci-val a:hover{color:var(--teal-lt);}
+.cform{display:flex;flex-direction:column;gap:12px;}
+.fg label{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);margin-bottom:5px;}
+.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:8px;font-size:14px;padding:11px 14px;font-family:'DM Sans',sans-serif;outline:none;color:#fff;transition:border .2s;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.28);}
+.fg input:focus,.fg textarea:focus{border-color:var(--teal-lt);}
+.fg textarea{resize:vertical;min-height:100px;}
+.form-btn{background:var(--teal);color:#fff;border:none;padding:12px 26px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .22s;align-self:flex-start;}
+.form-btn:hover{background:var(--teal-lt);transform:translateY(-1px);}
+.form-ok{display:none;margin-top:8px;padding:10px 14px;background:rgba(14,116,144,.2);border:1px solid rgba(14,116,144,.4);border-radius:7px;color:var(--teal-lt);font-size:13px;}
+footer{background:#060d14;color:rgba(255,255,255,.28);padding:20px 0;text-align:center;font-size:13px;}
+footer a{color:rgba(255,255,255,.4);text-decoration:none;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .burger{display:flex;}
+}
+@media(max-width:600px){
+  .container{padding:0 20px;}
+  section.content-sec{padding:60px 0;}
+  .contact-footer{padding:56px 0 0;}
+}
+
+/* ═══════════════════════════════════════════════════
+   EDITOR UI — appended to shared.css
+   ═══════════════════════════════════════════════════ */
+
+/* ── EDIT BAR (floating bottom) ─────────────────────── */
+.edit-bar{
+  position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:8000;
+  background:#0b1f33;border-radius:40px;padding:8px 16px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.12);
+  font-family:'DM Sans',sans-serif;max-width:96vw;
+}
+.edit-bar .eb-lbl{color:rgba(255,255,255,.38);font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;}
+.edit-bar button{border:none;padding:7px 15px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+#eb-edit{background:#0e7490;color:#fff;}
+#eb-edit:hover{background:#0d9ab8;}
+#eb-edit.on{background:#c9a84c;color:#0b1f33;}
+#eb-save,#eb-add,#eb-photo{display:none;}
+#eb-save{background:#16a34a;color:#fff;}
+#eb-save:hover{background:#15803d;}
+#eb-add{background:#7c3aed;color:#fff;}
+#eb-add:hover{background:#6d28d9;}
+#eb-photo{background:rgba(255,255,255,.12);color:#fff;}
+#eb-photo:hover{background:rgba(255,255,255,.22);}
+
+/* ── EDITABLE TEXT ───────────────────────────────────── */
+body.edit-mode [data-editable]{
+  outline:2px dashed rgba(14,116,144,.45);border-radius:3px;
+  cursor:text;padding:1px 3px;transition:outline .15s,background .15s;min-width:20px;display:inline-block;
+}
+body.edit-mode [data-editable]:hover{outline:2px solid #0e7490;background:rgba(14,116,144,.06);}
+body.edit-mode [data-editable]:focus{outline:2px solid #c9a84c!important;background:rgba(201,168,76,.08)!important;}
+body.edit-mode p[data-editable],body.edit-mode div[data-editable],body.edit-mode li[data-editable]{display:block;}
+
+/* ── SECTION CONTROL BAR ─────────────────────────────── */
+.sec-ctrl-bar{
+  display:none;
+  background:#0b1f33;border-radius:0 0 10px 10px;
+  padding:5px 12px;flex-wrap:wrap;gap:5px;align-items:center;
+  position:sticky;top:60px;z-index:500;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+}
+body.edit-mode .sec-ctrl-bar{display:flex;}
+.scb{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:none;padding:4px 11px;border-radius:14px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s;}
+.scb:hover{background:rgba(255,255,255,.22);}
+.scb-move{background:rgba(201,168,76,.25);color:#e8c96a;cursor:grab;}
+.scb-move:active{cursor:grabbing;}
+.scb-paste{background:rgba(14,116,144,.25);color:#7dd3e8;}
+.scb-paste:hover{background:rgba(14,116,144,.4);}
+.scb-add{background:rgba(124,58,237,.25);color:#c4b5fd;}
+.scb-add:hover{background:rgba(124,58,237,.4);}
+.scb-del{background:rgba(220,38,38,.2);color:#fca5a5;}
+.scb-del:hover{background:rgba(220,38,38,.4);}
+
+/* ── ADD ROW (between sections) ─────────────────────── */
+.add-row{display:none;text-align:center;padding:5px 0;position:relative;}
+body.edit-mode .add-row{display:block;}
+.add-row::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(14,116,144,.2);}
+.add-row-btn{position:relative;z-index:1;background:#fff;border:1.5px solid #0e7490;color:#0e7490;font-size:11px;font-weight:800;padding:4px 14px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s;}
+.add-row-btn:hover{background:#0e7490;color:#fff;}
+
+/* ── CONTENT BLOCK ───────────────────────────────────── */
+.cb{position:relative;margin:14px 0;}
+body.edit-mode .cb{outline:1px dashed rgba(201,168,76,.3);border-radius:8px;padding:6px 8px;}
+body.edit-mode .cb:hover>.cb-actions{opacity:1;pointer-events:all;}
+.cb-actions{position:absolute;top:-14px;right:6px;display:flex;gap:3px;opacity:0;pointer-events:none;transition:opacity .18s;z-index:100;background:#0b1f33;border-radius:8px;padding:3px 6px;}
+.cba{background:rgba(255,255,255,.1);color:#fff;border:none;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.cba:hover{background:rgba(255,255,255,.25);}
+.cba-del{background:rgba(220,38,38,.25);color:#fca5a5;}
+.cba-del:hover{background:rgba(220,38,38,.5);}
+
+/* ── IMAGE EDIT OVERLAY ──────────────────────────────── */
+.cb-img-wrap{position:relative;border-radius:10px;overflow:hidden;}
+body.edit-mode .cb-img-wrap::after{
+  content:'📷 Click to change';position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.45);color:#fff;font-size:13px;font-weight:700;
+  font-family:'DM Sans',sans-serif;cursor:pointer;opacity:0;transition:opacity .2s;
+}
+body.edit-mode .cb-img-wrap:hover::after{opacity:1;}
+
+/* ── EDIT MODE: section outline ──────────────────────── */
+body.edit-mode .editable-section{position:relative;outline:1px solid rgba(14,116,144,.12);}
+
+/* ── MODALS ──────────────────────────────────────────── */
+.modal-ov{display:none;position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:14px;}
+.modal-ov.open{display:flex;}
+.mbox{background:#1a2e44;border-radius:16px;padding:24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6);font-family:'DM Sans',sans-serif;}
+.mhd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.mhd h3{color:#fff;font-size:16px;font-weight:700;}
+.mclose{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;line-height:1;}
+.mclose:hover{background:rgba(255,255,255,.22);}
+.ml{display:block;color:rgba(255,255,255,.45);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin:12px 0 5px;}
+input[type=range]{width:100%;accent-color:#0e7490;}
+.mrange-v{color:rgba(255,255,255,.4);font-size:11px;text-align:center;margin-top:2px;}
+.mbrow{display:flex;gap:8px;margin-top:14px;}
+.mbtn{flex:1;padding:9px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.mbtn-p{background:#0e7490;color:#fff;} .mbtn-p:hover{background:#0d9ab8;}
+.mbtn-g{background:#16a34a;color:#fff;} .mbtn-g:hover{background:#15803d;}
+.mbtn-gh{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12)!important;}
+.mbtn-gh:hover{background:rgba(255,255,255,.15);}
+.upzone{border:2px dashed rgba(255,255,255,.22);border-radius:10px;padding:24px;text-align:center;cursor:pointer;margin-bottom:12px;transition:border-color .2s;}
+.upzone:hover{border-color:#0e7490;}
+.shape-row{display:flex;gap:7px;margin-top:5px;}
+.sh-btn{flex:1;padding:7px;border-radius:8px;border:2px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.6);font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s;}
+.sh-btn.on{border-color:#0e7490;background:#0e7490;color:#fff;}
+.bt-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+.bt-card{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-radius:10px;padding:13px;text-align:center;cursor:pointer;transition:all .2s;}
+.bt-card:hover{border-color:#0e7490;background:rgba(14,116,144,.1);}
+.bt-card .ico{font-size:24px;margin-bottom:5px;}
+.bt-card .lbl{color:#fff;font-size:12px;font-weight:700;}
+.bt-card .dsc{color:rgba(255,255,255,.38);font-size:10px;margin-top:2px;}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+.st-card{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-radius:10px;padding:13px;cursor:pointer;transition:all .2s;}
+.st-card:hover{border-color:#7c3aed;background:rgba(124,58,237,.1);}
+.st-card .ico{font-size:20px;margin-bottom:4px;}
+.st-card .lbl{color:#fff;font-size:12px;font-weight:700;}
+.st-card .dsc{color:rgba(255,255,255,.38);font-size:10px;margin-top:2px;line-height:1.4;}
+
+/* ── pub/exp cards edit highlight ───────────────────── */
+body.edit-mode .pub-card,body.edit-mode .proj-icard{outline:1px dashed rgba(201,168,76,.3);border-radius:10px;}
+body.edit-mode .pub-card [data-editable],body.edit-mode .proj-icard [data-editable]{outline:1px dashed rgba(14,116,144,.35);}
+
+/* ── MOBILE FIXES ────────────────────────────────────── */
+@media(max-width:700px){
+  .sec-ctrl-bar{top:var(--nav-h,60px);}
+  .edit-bar{padding:6px 12px;gap:5px;}
+  .edit-bar button{padding:6px 11px;font-size:11px;}
+  .bt-grid,.st-grid{grid-template-columns:1fr;}
+}
+
+
+/* ─ EDIT BAR ─────────────────────────── */
+.edit-bar{
+  position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:8000;
+  background:#0b1f33;border-radius:40px;padding:8px 18px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.12);
+  font-family:'DM Sans',sans-serif;max-width:96vw;
+}
+.eb-lbl{color:rgba(255,255,255,.38);font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;}
+.edit-bar button{border:none;padding:7px 16px;border-radius:20px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s;white-space:nowrap;}
+#eb-edit{background:#0e7490;color:#fff;}
+#eb-edit:hover{background:#0d9ab8;}
+#eb-edit.on{background:#c9a84c;color:#0b1f33;}
+#eb-save,#eb-add,#eb-photo{display:none;}
+#eb-save{background:#16a34a;color:#fff;}
+#eb-add{background:#7c3aed;color:#fff;}
+#eb-photo{background:rgba(255,255,255,.12);color:#fff;}
+
+/* ─ EDITABLE TEXT ──────────────────────── */
+body.edit-mode [data-editable]{outline:2px dashed rgba(14,116,144,.4);border-radius:3px;cursor:text;padding:1px 4px;min-width:20px;}
+body.edit-mode [data-editable]:hover{outline:2px solid #0e7490;background:rgba(14,116,144,.06);}
+body.edit-mode [data-editable]:focus{outline:2px solid #c9a84c!important;background:rgba(201,168,76,.08)!important;}
+
+/* ─ SECTION TOOLBAR ────────────────────── */
+.sec-bar{display:none;align-items:center;gap:5px;flex-wrap:wrap;background:#0b1f33;padding:5px 14px;border-radius:0 0 10px 10px;position:sticky;top:60px;z-index:600;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+body.edit-mode .sec-bar{display:flex;}
+.sb{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);border:none;padding:4px 12px;border-radius:14px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.sb:hover{background:rgba(255,255,255,.22);}
+.sb-drag{background:rgba(201,168,76,.2);color:#e8c96a;cursor:grab;}
+.sb-copy{background:rgba(14,116,144,.2);color:#7dd3e8;}
+.sb-paste{background:rgba(14,116,144,.15);color:#7dd3e8;opacity:.45;}
+.sb-paste.ready{opacity:1;}
+.sb-add{background:rgba(124,58,237,.2);color:#c4b5fd;}
+.sb-del{background:rgba(220,38,38,.15);color:#fca5a5;}
+.sb-del:hover{background:rgba(220,38,38,.4);}
+
+/* ─ SECTION outline ────────────────────── */
+body.edit-mode .editable-section{position:relative;outline:1px solid rgba(14,116,144,.1);}
+/* ─ DRAGGING ───────────────────────────── */
+.sec-dragging{opacity:0.4;outline:2px dashed #c9a84c!important;}
+
+/* ─ CONTENT BLOCKS ─────────────────────── */
+.cb{position:relative;margin:12px 0;}
+body.edit-mode .cb{outline:1px dashed rgba(201,168,76,.3);border-radius:8px;padding:6px 8px;}
+.cb-bar{display:none;position:absolute;top:-14px;right:6px;gap:3px;background:#0b1f33;border-radius:8px;padding:3px 7px;z-index:100;}
+body.edit-mode .cb:hover .cb-bar{display:flex;}
+.cbb{background:rgba(255,255,255,.1);color:#fff;border:none;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;cursor:pointer;}
+.cbb:hover{background:rgba(255,255,255,.25);}
+.cbb-del{background:rgba(220,38,38,.25);color:#fca5a5;}
+
+/* ─ IMG hover edit overlay ─────────────── */
+.img-edit-wrap{position:relative;border-radius:10px;overflow:hidden;}
+body.edit-mode .img-edit-wrap::after{content:'📷 Click to change';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);color:#fff;font-size:13px;font-weight:700;cursor:pointer;opacity:0;transition:opacity .2s;font-family:'DM Sans',sans-serif;}
+body.edit-mode .img-edit-wrap:hover::after{opacity:1;}
+
+/* ─ MODALS ──────────────────────────────── */
+.mov{display:none;position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.82);align-items:center;justify-content:center;padding:14px;}
+.mbox{background:#1a2e44;border-radius:16px;padding:24px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;font-family:'DM Sans',sans-serif;}
+.mhd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.mhd h3{color:#fff;font-size:16px;font-weight:700;}
+.mclose{background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;}
+.ml{display:block;color:rgba(255,255,255,.45);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin:12px 0 4px;}
+.mrange{width:100%;accent-color:#0e7490;}
+.mrv{color:rgba(255,255,255,.4);font-size:11px;text-align:center;margin-top:2px;}
+.mbrow{display:flex;gap:8px;margin-top:14px;}
+.mbtn{flex:1;padding:9px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;}
+.mbtn-g{background:#16a34a;color:#fff;} .mbtn-gh{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);}
+.upzone{border:2px dashed rgba(255,255,255,.22);border-radius:10px;padding:26px;text-align:center;cursor:pointer;margin-bottom:12px;}
+.upzone:hover{border-color:#0e7490;}
+.sh-row{display:flex;gap:7px;margin-top:5px;}
+.sh-btn{flex:1;padding:6px;border-radius:8px;border:2px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.6);font-size:11px;font-weight:700;cursor:pointer;}
+.sh-btn.on{border-color:#0e7490;background:#0e7490;color:#fff;}
+.bt-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+.bt-card{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-radius:10px;padding:13px;text-align:center;cursor:pointer;transition:all .2s;}
+.bt-card:hover,.st-card:hover{border-color:#0e7490;background:rgba(14,116,144,.1);}
+.bt-card .ico{font-size:22px;margin-bottom:4px;}
+.bt-card .lbl{color:#fff;font-size:12px;font-weight:700;}
+.bt-card .dsc{color:rgba(255,255,255,.38);font-size:10px;margin-top:2px;}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px;}
+.st-card{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;cursor:pointer;transition:all .2s;}
+.st-card .ico{font-size:18px;margin-bottom:3px;}
+.st-card .lbl{color:#fff;font-size:12px;font-weight:700;}
+.st-card .dsc{color:rgba(255,255,255,.38);font-size:10px;margin-top:2px;}
+@media(max-width:700px){.edit-bar{padding:6px 12px;}.edit-bar button{padding:6px 11px;font-size:11px;}.bt-grid,.st-grid{grid-template-columns:1fr;}}
+
+
+.pub-card{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:16px;position:relative;transition:box-shadow .25s,transform .25s;}
+.pub-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.08);transform:translateY(-2px);}
+.pub-venue{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:7px;}
+.pub-title{font-family:'DM Serif Display',serif;font-size:16.5px;color:var(--navy);line-height:1.45;margin-bottom:8px;}
+.pub-authors{font-size:12.5px;color:var(--muted);margin-bottom:8px;}
+.pub-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#fff;background:var(--navy);padding:5px 14px;border-radius:20px;text-decoration:none;transition:background .2s;}
+.pub-link:hover{background:var(--teal);}
+body.edit-mode .pub-card::before{content:'⠿ Drag to reorder';position:absolute;top:10px;right:12px;background:#0b1f33;color:rgba(255,255,255,.7);font-size:10px;font-weight:700;padding:2px 9px;border-radius:5px;cursor:grab;}
+.btn-outline{background:transparent;border:2px solid var(--teal);color:var(--teal);padding:9px 22px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.btn-outline:hover{background:var(--teal);color:#fff;}
+.page-hero{background:var(--navy);padding:calc(var(--nav-h) + 52px) 0 52px;text-align:center;}
+.page-hero .sec-label{color:rgba(255,255,255,.45);}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(30px,4vw,46px);color:#fff;margin-bottom:10px;}
+.page-hero p{font-size:15px;color:rgba(255,255,255,.6);max-width:480px;margin:0 auto;}
+
+</style>
+</head>
+<body>
+
+<!-- ══ EDIT BAR ════════════════════════════════════════════ -->
+<div class="edit-bar" id="edit-bar">
+  <span class="eb-lbl">Editor</span>
+  <button id="eb-edit" onclick="toggleEdit()">✏️ Edit Mode</button>
+  <button id="eb-photo" onclick="pickImg('hero-photo')">📷 Profile Photo</button>
+  <button id="eb-add" onclick="showAddSection(null,'after')">＋ Add Section</button>
+  <button id="eb-save" onclick="savePage()">💾 Save &amp; Download</button>
+</div>
+
+<!-- ══ IMAGE EDITOR ══════════════════════════════════════════ -->
+<div class="mov" id="img-modal" onclick="if(event.target===this)closeImgModal()">
+  <div class="mbox">
+    <div class="mhd"><h3>📷 Edit Photo</h3><button class="mclose" onclick="closeImgModal()">✕</button></div>
+    <div class="upzone" id="img-upzone" onclick="document.getElementById('img-file-in').click()"
+      ondragover="event.preventDefault();this.style.borderColor='#0e7490'"
+      ondragleave="this.style.borderColor='rgba(255,255,255,.22)'"
+      ondrop="handleImgDrop(event)">
+      <div style="font-size:36px;margin-bottom:8px;">📷</div>
+      <div style="color:#fff;font-size:14px;font-weight:600;">Click or drag & drop an image</div>
+      <div style="color:rgba(255,255,255,.4);font-size:12px;margin-top:3px;">JPG · PNG · WEBP</div>
+    </div>
+    <input type="file" id="img-file-in" accept="image/*" style="display:none" onchange="loadImgFile(event)">
+    <div id="img-canvas-area" style="display:none">
+      <div style="position:relative;width:100%;border-radius:10px;overflow:hidden;background:#000;margin-bottom:12px;" id="img-cwrap">
+        <canvas id="img-cv" style="display:block;width:100%;cursor:grab;touch-action:none;"></canvas>
+      </div>
+      <label class="ml">Crop Shape</label>
+      <div class="sh-row">
+        <button class="sh-btn" id="ish-circle" onclick="setIS('circle')">⬤ Circle</button>
+        <button class="sh-btn" id="ish-square" onclick="setIS('square')">■ Square</button>
+        <button class="sh-btn" id="ish-rect" onclick="setIS('rect')">▬ Rect</button>
+        <button class="sh-btn on" id="ish-free" onclick="setIS('free')">⬜ Free</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+        <div><label class="ml">Zoom</label><input class="mrange" type="range" id="img-zoom" min="30" max="300" value="100" oninput="isZoom(this.value)"><div class="mrv" id="img-zoom-lbl">100%</div></div>
+        <div><label class="ml">Rotate</label><input class="mrange" type="range" id="img-rot" min="-180" max="180" value="0" oninput="isRot(this.value)"><div class="mrv" id="img-rot-lbl">0°</div></div>
+        <div><label class="ml">Brightness</label><input class="mrange" type="range" id="img-bright" min="-100" max="100" value="0" oninput="isDraw()"></div>
+        <div><label class="ml">Contrast</label><input class="mrange" type="range" id="img-contrast" min="-100" max="100" value="0" oninput="isDraw()"></div>
+      </div>
+      <div class="mbrow">
+        <button class="mbtn mbtn-gh" onclick="isReset()">↺ Reset</button>
+        <button class="mbtn mbtn-g" onclick="isApply()">✓ Apply Photo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ADD BLOCK MODAL ═══════════════════════════════════════ -->
+<div class="mov" id="blk-modal" onclick="if(event.target===this)closeBlkModal()">
+  <div class="mbox">
+    <div class="mhd"><h3>＋ Add Content Block</h3><button class="mclose" onclick="closeBlkModal()">✕</button></div>
+    <div class="bt-grid">
+      <div class="bt-card" onclick="addBlock('text')"><div class="ico">📝</div><div class="lbl">Text</div><div class="dsc">Paragraph</div></div>
+      <div class="bt-card" onclick="addBlock('heading')"><div class="ico">🔤</div><div class="lbl">Heading</div><div class="dsc">Title + subtitle</div></div>
+      <div class="bt-card" onclick="addBlock('image')"><div class="ico">🖼️</div><div class="lbl">Image</div><div class="dsc">Upload photo</div></div>
+      <div class="bt-card" onclick="addBlock('img-text')"><div class="ico">📰</div><div class="lbl">Image + Text</div><div class="dsc">Side by side</div></div>
+      <div class="bt-card" onclick="addBlock('text-img')"><div class="ico">📄</div><div class="lbl">Text + Image</div><div class="dsc">Side by side</div></div>
+      <div class="bt-card" onclick="addBlock('highlight')"><div class="ico">✨</div><div class="lbl">Highlight Box</div><div class="dsc">Teal callout</div></div>
+      <div class="bt-card" onclick="addBlock('two-col')"><div class="ico">⬛⬛</div><div class="lbl">Two Columns</div><div class="dsc">Equal columns</div></div>
+      <div class="bt-card" onclick="addBlock('quote')"><div class="ico">💬</div><div class="lbl">Quote</div><div class="dsc">Pull quote</div></div>
+      <div class="bt-card" onclick="addBlock('divider')"><div class="ico">➖</div><div class="lbl">Divider</div><div class="dsc">Separator</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ADD SECTION MODAL ══════════════════════════════════════ -->
+<div class="mov" id="sec-modal" onclick="if(event.target===this)closeSecModal()">
+  <div class="mbox">
+    <div class="mhd"><h3>＋ Add New Section</h3><button class="mclose" onclick="closeSecModal()">✕</button></div>
+    <div class="st-grid">
+      <div class="st-card" onclick="addSection('blank')"><div class="ico">⬜</div><div class="lbl">Blank Section</div><div class="dsc">Empty, add blocks</div></div>
+      <div class="st-card" onclick="addSection('text-photo')"><div class="ico">📰</div><div class="lbl">Text + Photo</div><div class="dsc">Two column</div></div>
+      <div class="st-card" onclick="addSection('photo-text')"><div class="ico">🖼️</div><div class="lbl">Photo + Text</div><div class="dsc">Two column</div></div>
+      <div class="st-card" onclick="addSection('full-image')"><div class="ico">🏞️</div><div class="lbl">Full-Width Image</div><div class="dsc">Wide banner</div></div>
+      <div class="st-card" onclick="addSection('three-cards')"><div class="ico">🃏</div><div class="lbl">Three Cards</div><div class="dsc">Card grid</div></div>
+      <div class="st-card" onclick="addSection('banner')"><div class="ico">✨</div><div class="lbl">Banner</div><div class="dsc">Dark navy/teal</div></div>
+    </div>
+  </div>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Sumaiya <span>Akter</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="publications.html" class="active">Publications</a></li>
+      <li><a href="experience.html" >Experience</a></li>
+      <li><a href="gallery.html" >Gallery</a></li>
+      <li><a href="others.html">Others</a></li>
+      <li><a href="#contact-footer" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mob-nav">
+  <button class="mob-close" id="mob-close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="publications.html">Publications</a>
+  <a href="experience.html">Experience</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="others.html">Others</a>
+  <a href="#contact-footer">Contact</a>
+</div>
+
+<section class="editable-section" id="pub-hero" style="padding:0;">
+  <div class="page-hero">
+    <span class="sec-label" data-editable>Research</span>
+    <h1 data-editable>Publications</h1>
+    <p data-editable>Conference papers and research contributions on hydrology, GIS, and climate adaptation.</p>
+  </div>
+</section>
+
+<section class="editable-section" id="pub-main" style="background:#fff;padding:72px 0;">
+  <div class="container reveal">
+    <span class="sec-label" data-editable>Conference &amp; Journal Papers</span>
+    <h2 class="sec-title" data-editable>Research Output</h2>
+    <div class="divider"></div>
+    <div id="pub-list">
+      <div class="pub-card" id="pc1">
+        <div class="pub-venue" data-editable>AGU Fall Meeting · New Orleans, Louisiana · December 2025</div>
+        <div class="pub-title" data-editable>Integrating GeoSWMM and GeoGLOWS for High-Resolution Flood Extent Delineation in Ungauged Watersheds of Gazipur City, Bangladesh</div>
+        <div class="pub-authors" data-editable>Sumaiya Akter, Tashfia Mahjarin, Zeba Tahsin Haque, Partha Roy</div>
+        <a class="pub-link" href="https://agu25.ipostersessions.com/default.aspx?s=1A-6B-DB-81-F0-98-A6-37-4D-1D-9A-30-C0-AD-1E-61" target="_blank">↗ View iPoster</a>
+      </div>
+      <div class="pub-card" id="pc2">
+        <div class="pub-venue" data-editable>AGU Fall Meeting · Washington, D.C., USA · 2024</div>
+        <div class="pub-title" data-editable>Rainfall to Resource: A Climate Change Adaptation Strategy for Gazipur City Corporation, Bangladesh</div>
+        <div class="pub-authors" data-editable>Sumaiya Akter, Zeba Tahsin Haque, Partha Roy, Tashfia Mahjarin, Adil Hasan</div>
+        <a class="pub-link" href="https://agu.confex.com/agu/agu24/meetingapp.cgi/Paper/1714009" target="_blank">↗ View Paper</a>
+      </div>
+      <div class="pub-card" id="pc3">
+        <div class="pub-venue" data-editable>AGU Fall Meeting · Washington, D.C., USA · 2024</div>
+        <div class="pub-title" data-editable>Integrated Water Resources Management in the Surma River Basin, Bangladesh: A Multi-Criteria Analysis Approach</div>
+        <div class="pub-authors" data-editable>Sumaiya Akter, Md. Abdul Munim</div>
+        <a class="pub-link" href="https://agu.confex.com/agu/agu24/meetingapp.cgi/Paper/1719263" target="_blank">↗ View Paper</a>
+      </div>
+      <div class="pub-card" id="pc4">
+        <div class="pub-venue" data-editable>5th International Conference on Advances in Civil Engineering (ICACE 2020)</div>
+        <div class="pub-title" data-editable>GIS Analysis of Bankline Shifting of Old Buriganga River and Land Use Zoning of Kamrangirchar</div>
+        <div class="pub-authors" data-editable>S. Akter, M.K. Islam, T. Chowdhury</div>
+        <a class="pub-link" href="https://www.researchgate.net/profile/Sumaiya-Akter-39" target="_blank">↗ ResearchGate</a>
+      </div>
+      <div class="pub-card" id="pc5">
+        <div class="pub-venue" data-editable>5th International Conference on Advances in Civil Engineering (ICACE 2020)</div>
+        <div class="pub-title" data-editable>Application of Water Quality Index for Assessment of Old Buriganga River Water Quality and Land Use Changes of Kamrangirchar</div>
+        <div class="pub-authors" data-editable>T. Chowdhury, M.K. Islam, S. Akter</div>
+        <a class="pub-link" href="https://www.researchgate.net/profile/Sumaiya-Akter-39" target="_blank">↗ ResearchGate</a>
+      </div>
+      <div class="pub-card" id="pc6">
+        <div class="pub-venue" data-editable>10th International Conference on Water and Flood Management — ICWFM 2025, Dhaka, Bangladesh</div>
+        <div class="pub-title" data-editable>Impact of Urban Expansion and Climate Change on Satarkul Watershed in Dhaka: Insights from Machine Learning and Hydrological Simulation</div>
+        <div class="pub-authors" data-editable>P. Roy, Z.T. Huque, S. Akter, R. Adib</div>
+        <a class="pub-link" href="https://www.researchgate.net/profile/Sumaiya-Akter-39" target="_blank">↗ ResearchGate</a>
+      </div>
+    </div>
+    <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <button class="btn-outline" onclick="addPub()">＋ Add Publication</button>
+      <button class="btn-outline" onclick="showAddBlock('pub-extra')">＋ Add Block Below</button>
+    </div>
+    <div id="pub-extra" style="margin-top:10px;"></div>
+  </div>
+</section>
+<section class="contact-footer editable-section" id="contact-footer">
+  <div class="container reveal">
+    <span class="sec-label">Contact</span>
+    <h2 class="sec-title">Get in Touch</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div>
+        <p style="font-size:15px;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:28px;max-width:380px;" data-editable>Open to graduate research opportunities, collaborations, and professional connections in civil and environmental engineering.</p>
+        <div class="ci"><div class="ci-icon">📍</div><div><span class="ci-lbl">Address</span><div class="ci-val" data-editable>10817 NW 7th St, Miami, FL 33172, USA</div></div></div>
+        <div class="ci"><div class="ci-icon">📧</div><div><span class="ci-lbl">Email</span><div class="ci-val" data-editable>sumaiyaakterfairuz@gmail.com</div></div></div>
+        <div class="ci"><div class="ci-icon">📞</div><div><span class="ci-lbl">Phone (USA)</span><div class="ci-val" data-editable>+1 786-622-5568</div></div></div>
+        <div class="ci"><div class="ci-icon">📞</div><div><span class="ci-lbl">Phone (BD)</span><div class="ci-val" data-editable>+88 0152-132-8382</div></div></div>
+        <div class="ci"><div class="ci-icon">🔬</div><div><span class="ci-lbl">ResearchGate</span><div class="ci-val"><a href="https://www.researchgate.net/profile/Sumaiya-Akter-39" target="_blank">Sumaiya-Akter-39 ↗</a></div></div></div>
+      </div>
+      <div>
+        <div class="cform">
+          <div class="fg"><label>Your Name</label><input type="text" id="cn" placeholder="Full name"></div>
+          <div class="fg"><label>Email</label><input type="email" id="ce" placeholder="your@email.com"></div>
+          <div class="fg"><label>Subject</label><input type="text" id="cs" placeholder="Research inquiry…"></div>
+          <div class="fg"><label>Message</label><textarea id="cm" placeholder="Write your message…"></textarea></div>
+          <button class="form-btn" onclick="sendMsg()">Send Message →</button>
+          <div class="form-ok" id="form-ok">✓ Message sent! Sumaiya will get back to you soon.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    © 2025 Sumaiya Akter · Civil &amp; Water Resources Engineer · Miami, FL &nbsp;·&nbsp;
+    <a href="index.html">Home</a> &nbsp;·&nbsp;<a href="publications.html">Publications</a> &nbsp;·&nbsp;
+    <a href="experience.html">Experience</a> &nbsp;·&nbsp;<a href="gallery.html">Gallery</a>
+  </div>
+</footer>
+<script>
+
+// Nav scroll shadow
+window.addEventListener('scroll', function(){
+  var n = document.getElementById('main-nav');
+  if(n) n.classList.toggle('scrolled', window.scrollY > 10);
+});
+// Mobile nav
+document.addEventListener('DOMContentLoaded', function(){
+  var b = document.getElementById('burger'), m = document.getElementById('mob-nav'), mc = document.getElementById('mob-close');
+  if(b) b.onclick = function(){ m.classList.add('open'); };
+  if(mc) mc.onclick = function(){ m.classList.remove('open'); };
+  // scroll reveal
+  var ro = new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); }); }, {threshold:.07});
+  document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+});
+function closeMob(){ document.getElementById('mob-nav').classList.remove('open'); }
+
+
+/* ══════════════ EDITOR ══════════════════════════════════════ */
+var EDIT = false;
+var _cb = null; // clipboard: {type:'section'|'block', html:string}
+var _imgEl = null;
+var IS = {img:null,zoom:100,rot:0,panX:0,panY:0,shape:'free',drag:false,lx:0,ly:0};
+
+/* ── EDIT TOGGLE ───────────────────────────────────────────── */
+function toggleEdit(){
+  EDIT = !EDIT;
+  document.body.classList.toggle('edit-mode', EDIT);
+  var btn = document.getElementById('eb-edit');
+  btn.textContent = EDIT ? '✓ Editing...' : '✏️ Edit Mode';
+  btn.classList.toggle('on', EDIT);
+  ['eb-save','eb-add','eb-photo'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = EDIT ? 'inline-block' : 'none';
+  });
+  // enable/disable contenteditable on all data-editable elements
+  document.querySelectorAll('[data-editable]').forEach(function(el){
+    el.contentEditable = EDIT ? 'true' : 'false';
+  });
+  // show/hide all sec-bars
+  document.querySelectorAll('.sec-bar').forEach(function(b){
+    b.style.display = EDIT ? 'flex' : 'none';
+  });
+  // show/hide cb-bars (block toolbars) - controlled by CSS hover
+  if(EDIT) enableSkillDrag(); else disableSkillDrag();
+  updatePasteBtns();
+  toast(EDIT ? '✏️ Edit mode ON — click any text to edit, use toolbar to move/copy sections' : '');
+}
+
+/* ── SKILL BAR DRAG ────────────────────────────────────────── */
+function enableSkillDrag(){
+  document.querySelectorAll('.sk-bar').forEach(function(bar){
+    bar.style.cursor='ew-resize';
+    bar.onmousedown=function(e){
+      e.preventDefault();
+      var fill=bar.querySelector('.sk-fill'), pct=bar.parentElement.querySelector('.sk-pct');
+      function mv(ev){ var r=bar.getBoundingClientRect(); var w=Math.min(100,Math.max(5,Math.round((ev.clientX-r.left)/r.width*100))); if(fill)fill.style.width=w+'%'; if(pct)pct.textContent=w+'%'; }
+      function up(){ document.removeEventListener('mousemove',mv); document.removeEventListener('mouseup',up); }
+      document.addEventListener('mousemove',mv); document.addEventListener('mouseup',up);
+    };
+  });
+}
+function disableSkillDrag(){ document.querySelectorAll('.sk-bar').forEach(function(b){b.style.cursor='';b.onmousedown=null;}); }
+
+/* ── SECTION: MOVE ─────────────────────────────────────────── */
+function secUp(id){
+  var el=document.getElementById(id); if(!el)return;
+  var prev=el.previousElementSibling;
+  while(prev && !prev.classList.contains('editable-section')) prev=prev.previousElementSibling;
+  if(prev) el.parentNode.insertBefore(el, prev);
+  toast('Section moved up');
+}
+function secDown(id){
+  var el=document.getElementById(id); if(!el)return;
+  var next=el.nextElementSibling;
+  while(next && !next.classList.contains('editable-section')) next=next.nextElementSibling;
+  if(next) el.parentNode.insertBefore(next, el);
+  toast('Section moved down');
+}
+
+/* ── SECTION: COPY ─────────────────────────────────────────── */
+function secCopy(id){
+  var el=document.getElementById(id); if(!el)return;
+  var clone=el.cloneNode(true);
+  // strip toolbar from clone
+  var bar=clone.querySelector('.sec-bar'); if(bar) bar.remove();
+  _cb = {type:'section', html:clone.outerHTML};
+  updatePasteBtns();
+  toast('✓ Section copied! Use "Paste ↑" or "Paste ↓" on any section.');
+}
+
+/* ── SECTION: PASTE ────────────────────────────────────────── */
+function secPaste(refId, pos){
+  if(!_cb || _cb.type!=='section'){ toast('Nothing copied. Copy a section first.'); return; }
+  var ref=document.getElementById(refId); if(!ref)return;
+  var tmp=document.createElement('div'); tmp.innerHTML=_cb.html;
+  var ns=tmp.firstElementChild;
+  ns.id='sec'+Date.now();
+  ns.classList.add('editable-section');
+  // inject fresh toolbar
+  injectSecBar(ns);
+  if(pos==='before') ref.parentNode.insertBefore(ns, ref);
+  else ref.parentNode.insertBefore(ns, ref.nextSibling);
+  ns.querySelectorAll('[data-editable]').forEach(function(el){ el.contentEditable='true'; });
+  toast('Section pasted!');
+}
+
+/* ── SECTION: DELETE ───────────────────────────────────────── */
+function secDel(id){
+  if(!confirm('Delete this section?')) return;
+  var el=document.getElementById(id); if(el) el.remove();
+}
+
+/* ── SECTION: DRAG-TO-REORDER ──────────────────────────────── */
+var _dsec=null, _dsecY=0;
+function secDragStart(e, id){
+  _dsec=document.getElementById(id); if(!_dsec)return;
+  _dsecY=e.clientY;
+  _dsec.classList.add('sec-dragging');
+  document.addEventListener('mousemove', secDragMove);
+  document.addEventListener('mouseup', secDragEnd);
+  e.preventDefault();
+}
+function secDragMove(e){
+  if(!_dsec)return;
+  var dy=e.clientY-_dsecY;
+  if(dy<-48){
+    var prev=_dsec.previousElementSibling;
+    while(prev && !prev.classList.contains('editable-section')) prev=prev.previousElementSibling;
+    if(prev){_dsec.parentNode.insertBefore(_dsec,prev);_dsecY=e.clientY;}
+  } else if(dy>48){
+    var next=_dsec.nextElementSibling;
+    while(next && !next.classList.contains('editable-section')) next=next.nextElementSibling;
+    if(next){_dsec.parentNode.insertBefore(next,_dsec);_dsecY=e.clientY;}
+  }
+}
+function secDragEnd(){
+  if(_dsec){ _dsec.classList.remove('sec-dragging'); _dsec=null; }
+  document.removeEventListener('mousemove', secDragMove);
+  document.removeEventListener('mouseup', secDragEnd);
+}
+
+/* ── INJECT SECTION TOOLBAR ────────────────────────────────── */
+function injectSecBar(sec){
+  if(sec.querySelector('.sec-bar')) return; // already has one
+  var id=sec.id;
+  var bar=document.createElement('div');
+  bar.className='sec-bar';
+  bar.innerHTML=
+    '<span style="color:rgba(255,255,255,.35);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-right:4px;">Section:</span>'+
+    '<button class="sb sb-drag" onmousedown="secDragStart(event,\''+id+'\')">⠿ Drag</button>'+
+    '<button class="sb" onclick="secUp(\''+id+'\')">↑ Up</button>'+
+    '<button class="sb" onclick="secDown(\''+id+'\')">↓ Down</button>'+
+    '<button class="sb sb-copy" onclick="secCopy(\''+id+'\')">⎘ Copy</button>'+
+    '<button class="sb sb-paste" id="sp1_'+id+'" onclick="secPaste(\''+id+'\',\'before\')">⏎ Paste ↑</button>'+
+    '<button class="sb sb-paste" id="sp2_'+id+'" onclick="secPaste(\''+id+'\',\'after\')">⏎ Paste ↓</button>'+
+    '<button class="sb sb-add" onclick="showAddSection(\''+id+'\',\'before\')">＋ Before</button>'+
+    '<button class="sb sb-add" onclick="showAddSection(\''+id+'\',\'after\')">＋ After</button>'+
+    '<button class="sb sb-del" onclick="secDel(\''+id+'\')">✕ Delete</button>';
+  sec.insertBefore(bar, sec.firstChild);
+}
+
+function updatePasteBtns(){
+  document.querySelectorAll('.sb-paste').forEach(function(b){
+    b.classList.toggle('ready', !!_cb);
+  });
+}
+
+/* ── INIT SECTION BARS ─────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.editable-section').forEach(function(sec){
+    if(!sec.id) sec.id='sec'+Math.random().toString(36).substr(2,8);
+    injectSecBar(sec);
+  });
+});
+
+/* ── ADD SECTION ───────────────────────────────────────────── */
+var _addRef=null, _addPos='after';
+function showAddSection(refId, pos){
+  _addRef=refId; _addPos=pos||'after';
+  document.getElementById('sec-modal').style.display='flex';
+}
+function closeSecModal(){ document.getElementById('sec-modal').style.display='none'; }
+
+function addSection(type){
+  closeSecModal();
+  var uid='sec'+Date.now();
+  var bg='background:#fff;padding:72px 0;';
+  var inner='';
+  if(type==='blank'){
+    inner='<div class="container"><span class="sec-label" data-editable>Label</span><h2 class="sec-title" data-editable>Section Title</h2><div class="divider"></div>'+
+      '<div id="'+uid+'z"></div>'+
+      '<div style="text-align:center;padding:14px 0;"><button class="btn-outline" onclick="showAddBlock(\''+uid+'z\')">＋ Add content block</button></div></div>';
+  } else if(type==='text-photo'){
+    inner='<div class="container"><span class="sec-label" data-editable>Section</span><h2 class="sec-title" data-editable>Title</h2><div class="divider"></div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">'+
+      '<p style="font-size:15px;color:#374151;line-height:1.9;" data-editable>Click to edit text.</p>'+
+      '<div class="img-edit-wrap" onclick="if(EDIT)pickImg(\''+uid+'i\')"><img id="'+uid+'i" src="'+ph(600,380)+'" style="width:100%;border-radius:12px;"></div>'+
+      '</div></div>';
+  } else if(type==='photo-text'){
+    inner='<div class="container"><span class="sec-label" data-editable>Section</span><h2 class="sec-title" data-editable>Title</h2><div class="divider"></div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">'+
+      '<div class="img-edit-wrap" onclick="if(EDIT)pickImg(\''+uid+'i\')"><img id="'+uid+'i" src="'+ph(600,380)+'" style="width:100%;border-radius:12px;"></div>'+
+      '<p style="font-size:15px;color:#374151;line-height:1.9;" data-editable>Click to edit text.</p>'+
+      '</div></div>';
+  } else if(type==='full-image'){
+    bg='padding:0;';
+    inner='<div class="img-edit-wrap" onclick="if(EDIT)pickImg(\''+uid+'i\')" style="max-height:440px;overflow:hidden;">'+
+      '<img id="'+uid+'i" src="'+ph(1200,440)+'" style="width:100%;display:block;"></div>'+
+      '<div class="container"><p style="font-size:12px;color:#9ca3af;text-align:center;padding:10px 0 20px;font-style:italic;" data-editable>Image caption</p></div>';
+  } else if(type==='three-cards'){
+    inner='<div class="container"><span class="sec-label" data-editable>Section</span><h2 class="sec-title" data-editable>Title</h2><div class="divider"></div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">'+
+      [1,2,3].map(function(n){return '<div style="background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:22px;">'+
+        '<h4 data-editable style="font-family:\'DM Serif Display\',serif;color:#0f2942;font-size:17px;margin-bottom:8px;">Card '+n+' Title</h4>'+
+        '<p data-editable style="font-size:13px;color:#6b7280;line-height:1.75;">Card description.</p></div>';}).join('')+
+      '</div></div>';
+  } else if(type==='banner'){
+    bg='padding:56px 0;background:linear-gradient(135deg,#0f2942,#0e7490);';
+    inner='<div class="container" style="text-align:center;">'+
+      '<h2 data-editable style="font-family:\'DM Serif Display\',serif;color:#fff;font-size:32px;margin-bottom:12px;">Banner Title</h2>'+
+      '<p data-editable style="color:rgba(255,255,255,.75);font-size:16px;max-width:600px;margin:0 auto;line-height:1.8;">Your message here.</p></div>';
+  }
+  var sec=document.createElement('section');
+  sec.className='editable-section'; sec.id=uid;
+  sec.style.cssText=bg;
+  sec.innerHTML=inner;
+  injectSecBar(sec);
+  var ref=_addRef?document.getElementById(_addRef):null;
+  if(ref){
+    if(_addPos==='before') ref.parentNode.insertBefore(sec,ref);
+    else ref.parentNode.insertBefore(sec,ref.nextSibling);
+  } else {
+    document.body.appendChild(sec);
+  }
+  sec.querySelectorAll('[data-editable]').forEach(function(el){el.contentEditable='true';});
+  updatePasteBtns();
+}
+
+/* ── CONTENT BLOCKS ────────────────────────────────────────── */
+var _bz=null; // block zone element or id
+function showAddBlock(zoneId){
+  _bz=zoneId;
+  document.getElementById('blk-modal').style.display='flex';
+}
+function closeBlkModal(){ document.getElementById('blk-modal').style.display='none'; }
+
+function addBlock(type){
+  closeBlkModal();
+  var zone=typeof _bz==='string'?document.getElementById(_bz):_bz;
+  if(!zone){toast('Error: no zone'); return;}
+  var uid='blk'+Date.now(), inner='';
+  if(type==='text') inner='<p data-editable style="font-size:15px;color:#374151;line-height:1.9;">Click to edit this paragraph.</p>';
+  else if(type==='heading') inner='<h3 data-editable style="font-family:\'DM Serif Display\',serif;font-size:22px;color:#0f2942;margin-bottom:4px;">Your Heading</h3><p data-editable style="font-size:13px;font-weight:700;color:#0e7490;text-transform:uppercase;letter-spacing:.8px;">Subtitle</p>';
+  else if(type==='image') inner='<div class="img-edit-wrap" onclick="if(EDIT)pickImg(\''+uid+'i\')"><img id="'+uid+'i" src="'+ph(700,360)+'" style="width:100%;border-radius:10px;"></div><p data-editable style="font-size:12px;color:#9ca3af;text-align:center;margin-top:6px;font-style:italic;">Caption</p>';
+  else if(type==='img-text') inner='<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;"><div class="img-edit-wrap" onclick="if(EDIT)pickImg(\''+uid+'i\')"><img id="'+uid+'i" src="'+ph(400,260)+'" style="width:100%;border-radius:10px;object-fit:cover;"></div><div><h4 data-editable style="font-family:\'DM Serif Display\',serif;font-size:18px;color:#0f2942;margin-bottom:8px;">Heading</h4><p data-editable style="font-size:14px;color:#374151;line-height:1.85;">Your text.</p></div></div>';
+  else if(type==='text-img') inner='<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;"><div><h4 data-editable style="font-family:\'DM Serif Display\',serif;font-size:18px;color:#0f2942;margin-bottom:8px;">Heading</h4><p data-editable style="font-size:14px;color:#374151;line-height:1.85;">Your text.</p></div><div class="img-edit-wrap" onclick="if(EDIT)pickImg(\''+uid+'i\')"><img id="'+uid+'i" src="'+ph(400,260)+'" style="width:100%;border-radius:10px;object-fit:cover;"></div></div>';
+  else if(type==='highlight') inner='<div style="background:#e8f6fa;border:1px solid rgba(14,116,144,.2);border-left:4px solid #0e7490;border-radius:10px;padding:18px 22px;"><strong data-editable style="color:#0f2942;display:block;margin-bottom:6px;">Highlight Title</strong><p data-editable style="font-size:14px;color:#374151;line-height:1.8;margin:0;">Callout text.</p></div>';
+  else if(type==='two-col') inner='<div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;"><p data-editable style="font-size:14px;color:#374151;line-height:1.85;">Left column text.</p><p data-editable style="font-size:14px;color:#374151;line-height:1.85;">Right column text.</p></div>';
+  else if(type==='quote') inner='<blockquote style="border-left:4px solid #0e7490;padding:14px 20px;background:#f8fafc;border-radius:0 10px 10px 0;"><p data-editable style="font-size:16px;font-style:italic;color:#374151;line-height:1.75;margin-bottom:6px;">Your quote here.</p><cite data-editable style="font-size:12px;color:#9ca3af;">— Source</cite></blockquote>';
+  else if(type==='divider') inner='<hr style="border:none;border-top:2px solid #e5e7eb;margin:8px 0;">';
+
+  var wrap=document.createElement('div'); wrap.className='cb'; wrap.id=uid;
+  var bar='<div class="cb-bar">'+
+    '<button class="cbb" onclick="blkUp(\''+uid+'\')">↑</button>'+
+    '<button class="cbb" onclick="blkDown(\''+uid+'\')">↓</button>'+
+    '<button class="cbb" onclick="blkCopy(\''+uid+'\')">⎘ Copy</button>'+
+    '<button class="cbb" onclick="blkPaste(\''+uid+'\',\'before\')">⏎↑</button>'+
+    '<button class="cbb" onclick="blkPaste(\''+uid+'\',\'after\')">⏎↓</button>'+
+    '<button class="cbb cbb-del" onclick="blkDel(\''+uid+'\')">✕</button>'+
+    '</div>';
+  wrap.innerHTML=bar+inner;
+  zone.appendChild(wrap);
+  wrap.querySelectorAll('[data-editable]').forEach(function(el){el.contentEditable='true';});
+}
+
+function blkUp(id){ var e=document.getElementById(id); if(e&&e.previousElementSibling) e.parentNode.insertBefore(e,e.previousElementSibling); }
+function blkDown(id){ var e=document.getElementById(id); if(e&&e.nextElementSibling) e.parentNode.insertBefore(e.nextElementSibling,e); }
+function blkCopy(id){ var e=document.getElementById(id); if(!e)return; var c=e.cloneNode(true); c.querySelector('.cb-bar')&&c.querySelector('.cb-bar').remove(); _cb={type:'block',html:c.outerHTML}; updatePasteBtns(); toast('Block copied!'); }
+function blkPaste(refId,pos){
+  if(!_cb||_cb.type!=='block'){toast('No block copied.');return;}
+  var ref=document.getElementById(refId); if(!ref)return;
+  var tmp=document.createElement('div'); tmp.innerHTML=_cb.html;
+  var nb=tmp.firstElementChild; nb.id='blk'+Date.now();
+  if(pos==='before') ref.parentNode.insertBefore(nb,ref); else ref.parentNode.insertBefore(nb,ref.nextSibling);
+  nb.querySelectorAll('[data-editable]').forEach(function(el){el.contentEditable='true';});
+  toast('Block pasted!');
+}
+function blkDel(id){ if(confirm('Delete block?')){var e=document.getElementById(id);if(e)e.remove();} }
+
+/* ── IMAGE EDITOR ─────────────────────────────────────────── */
+function pickImg(targetId){
+  _imgEl=document.getElementById(targetId);
+  IS={img:null,zoom:100,rot:0,panX:0,panY:0,shape:'free',drag:false,lx:0,ly:0};
+  document.getElementById('img-canvas-area').style.display='none';
+  document.getElementById('img-upzone').style.display='block';
+  document.getElementById('img-file-in').value='';
+  setIS('free');
+  document.getElementById('img-modal').style.display='flex';
+  if(_imgEl&&_imgEl.src&&_imgEl.src.startsWith('data:')){
+    var i=new Image();i.onload=function(){IS.img=i;isReset();isShow();};i.src=_imgEl.src;
+  }
+}
+function openImgModal(id){ pickImg(id); } // alias
+function closeImgModal(){ document.getElementById('img-modal').style.display='none'; }
+function handleImgDrop(e){ e.preventDefault(); var f=e.dataTransfer.files[0]; if(f&&f.type.startsWith('image/')) readIF(f); }
+function loadImgFile(e){ var f=e.target.files[0]; if(!f)return; readIF(f); }
+function readIF(file){ var r=new FileReader(); r.onload=function(ev){var i=new Image();i.onload=function(){IS.img=i;isReset();isShow();};i.src=ev.target.result;}; r.readAsDataURL(file); }
+function isShow(){ document.getElementById('img-upzone').style.display='none'; document.getElementById('img-canvas-area').style.display='block'; isDraw(); }
+function isReset(){ IS.zoom=100;IS.rot=0;IS.panX=0;IS.panY=0; setIS('free'); document.getElementById('img-zoom').value=100; document.getElementById('img-rot').value=0; document.getElementById('img-bright').value=0; document.getElementById('img-contrast').value=0; document.getElementById('img-zoom-lbl').textContent='100%'; document.getElementById('img-rot-lbl').textContent='0°'; if(IS.img)isDraw(); }
+function setIS(s){ IS.shape=s; ['circle','square','rect','free'].forEach(function(id){var b=document.getElementById('ish-'+id);if(b)b.classList.toggle('on',id===s);}); isDraw(); }
+function isZoom(v){ IS.zoom=parseInt(v); document.getElementById('img-zoom-lbl').textContent=v+'%'; isDraw(); }
+function isRot(v){ IS.rot=parseInt(v); document.getElementById('img-rot-lbl').textContent=v+'°'; isDraw(); }
+function isDraw(){
+  if(!IS.img)return;
+  var wrap=document.getElementById('img-cwrap');
+  var sz=Math.min(wrap.clientWidth||440,440);
+  var ch=IS.shape==='rect'?Math.round(sz*.68):IS.shape==='circle'?sz:Math.round(sz*.7);
+  var cv=document.getElementById('img-cv');
+  cv.width=sz; cv.height=ch;
+  var ctx=cv.getContext('2d');
+  ctx.clearRect(0,0,sz,ch); ctx.save(); ctx.beginPath();
+  if(IS.shape==='circle'){ctx.arc(sz/2,ch/2,Math.min(sz,ch)/2-2,0,Math.PI*2);}
+  else{ctx.rect(0,0,sz,ch);}
+  ctx.clip();
+  ctx.translate(sz/2+IS.panX,ch/2+IS.panY); ctx.rotate(IS.rot*Math.PI/180);
+  var sc=IS.zoom/100,fw=IS.img.naturalWidth,fh=IS.img.naturalHeight;
+  var fit=Math.max(sz/fw,ch/fh); var dw=fw*fit*sc,dh=fh*fit*sc;
+  var br=parseInt(document.getElementById('img-bright').value)||0;
+  var co=parseInt(document.getElementById('img-contrast').value)||0;
+  ctx.filter='brightness('+(100+br)+'%) contrast('+(100+co)+'%)';
+  ctx.drawImage(IS.img,-dw/2,-dh/2,dw,dh); ctx.restore();
+}
+function isApply(){
+  var sz=480, ch=IS.shape==='rect'?320:IS.shape==='circle'?480:360;
+  var ec=document.createElement('canvas'); ec.width=sz; ec.height=ch;
+  var ctx=ec.getContext('2d');
+  ctx.clearRect(0,0,sz,ch); ctx.save(); ctx.beginPath();
+  if(IS.shape==='circle'){ctx.arc(sz/2,ch/2,sz/2-2,0,Math.PI*2);}else{ctx.rect(0,0,sz,ch);}
+  ctx.clip();
+  ctx.translate(sz/2+IS.panX,ch/2+IS.panY); ctx.rotate(IS.rot*Math.PI/180);
+  var sc=IS.zoom/100,fw=IS.img.naturalWidth,fh=IS.img.naturalHeight;
+  var fit=Math.max(sz/fw,ch/fh); var dw=fw*fit*sc,dh=fh*fit*sc;
+  var br=parseInt(document.getElementById('img-bright').value)||0;
+  var co=parseInt(document.getElementById('img-contrast').value)||0;
+  ctx.filter='brightness('+(100+br)+'%) contrast('+(100+co)+'%)';
+  ctx.drawImage(IS.img,-dw/2,-dh/2,dw,dh); ctx.restore();
+  if(_imgEl) _imgEl.src=ec.toDataURL('image/png');
+  closeImgModal();
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var cv=document.getElementById('img-cv'); if(!cv)return;
+  cv.addEventListener('mousedown',function(e){IS.drag=true;IS.lx=e.clientX;IS.ly=e.clientY;cv.style.cursor='grabbing';});
+  cv.addEventListener('touchstart',function(e){IS.drag=true;IS.lx=e.touches[0].clientX;IS.ly=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('mousemove',function(e){if(!IS.drag)return;IS.panX+=e.clientX-IS.lx;IS.panY+=e.clientY-IS.ly;IS.lx=e.clientX;IS.ly=e.clientY;isDraw();});
+  document.addEventListener('touchmove',function(e){if(!IS.drag)return;IS.panX+=e.touches[0].clientX-IS.lx;IS.panY+=e.touches[0].clientY-IS.ly;IS.lx=e.touches[0].clientX;IS.ly=e.touches[0].clientY;isDraw();},{passive:true});
+  document.addEventListener('mouseup',function(){IS.drag=false;var c=document.getElementById('img-cv');if(c)c.style.cursor='grab';});
+  document.addEventListener('touchend',function(){IS.drag=false;});
+  cv.addEventListener('wheel',function(e){e.preventDefault();IS.zoom=Math.min(300,Math.max(30,IS.zoom-(e.deltaY>0?5:-5)));document.getElementById('img-zoom').value=IS.zoom;document.getElementById('img-zoom-lbl').textContent=IS.zoom+'%';isDraw();},{passive:false});
+});
+
+/* ── PLACEHOLDER SVG ──────────────────────────────────────── */
+function ph(w,h){ return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='"+w+"' height='"+h+"'%3E%3Crect width='"+w+"' height='"+h+"' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-size='16' font-family='sans-serif'%3EClick in edit mode to upload%3C%2Ftext%3E%3C%2Fsvg%3E"; }
+
+/* ── TOAST ──────────────────────────────────────────────────── */
+function toast(msg){
+  if(!msg) return;
+  var t=document.getElementById('_toast');
+  if(!t){t=document.createElement('div');t.id='_toast';t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#0f2942;color:#fff;padding:8px 22px;border-radius:30px;font-size:13px;font-weight:700;z-index:9999;pointer-events:none;opacity:0;transition:opacity .25s;font-family:"DM Sans",sans-serif;white-space:nowrap;';document.body.appendChild(t);}
+  t.textContent=msg; t.style.opacity='1';
+  clearTimeout(t._t); t._t=setTimeout(function(){t.style.opacity='0';},3000);
+}
+
+/* ── CONTACT FORM ───────────────────────────────────────────── */
+function sendMsg(){
+  var n=document.getElementById('cn'),e=document.getElementById('ce');
+  if(!n||!n.value||!e||!e.value){alert('Please fill name and email.');return;}
+  document.getElementById('form-ok').style.display='block';
+  ['cn','ce','cs','cm'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  setTimeout(function(){document.getElementById('form-ok').style.display='none';},4000);
+}
+
+/* ── SAVE PAGE ──────────────────────────────────────────────── */
+function savePage(){
+  if(EDIT) toggleEdit();
+  setTimeout(function(){
+    var clone=document.documentElement.cloneNode(true);
+    clone.querySelectorAll('#edit-bar,#img-modal,#blk-modal,#sec-modal,#_toast,.sec-bar,.cb-bar').forEach(function(el){el.remove();});
+    var html='<!DOCTYPE html>\n'+clone.outerHTML;
+    var blob=new Blob([html],{type:'text/html'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download=(document.title.split('|')[0].trim().toLowerCase().replace(/\s+/g,'-')||'page')+'.html';
+    a.click(); setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
+  },300);
+}
+
+
+var _pcN=7;
+function addPub(){
+  var list=document.getElementById('pub-list');
+  var id='pc'+_pcN++;
+  var c=document.createElement('div'); c.className='pub-card'; c.id=id;
+  c.innerHTML='<div class="pub-venue" data-editable contenteditable="true">Conference · Location · Year</div>'+
+    '<div class="pub-title" data-editable contenteditable="true">Paper Title — click to edit</div>'+
+    '<div class="pub-authors" data-editable contenteditable="true">Author 1, Author 2</div>'+
+    '<a class="pub-link" href="#" data-editable contenteditable="true">↗ View Paper</a>'+
+    '<button onclick="this.closest(\'.pub-card\').remove()" style="position:absolute;top:10px;right:36px;background:#991b1b;color:#fff;border:none;padding:3px 9px;border-radius:5px;font-size:10px;cursor:pointer;font-family:\'DM Sans\',sans-serif;">✕</button>';
+  list.appendChild(c);
+  toast('Publication added — click text to edit');
+}
+// pub drag reorder
+var _dpub=null,_dpubY=0;
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('pub-list').addEventListener('mousedown',function(e){
+    if(!EDIT) return;
+    var card=e.target.closest('.pub-card'); if(!card)return;
+    _dpub=card; _dpubY=e.clientY; card.style.opacity='0.4';
+    document.addEventListener('mousemove',_onDpub); document.addEventListener('mouseup',_upDpub);
+  });
+});
+function _onDpub(e){ if(!_dpub)return; var dy=e.clientY-_dpubY; if(dy<-30){var p=_dpub.previousElementSibling;if(p){_dpub.parentNode.insertBefore(_dpub,p);_dpubY=e.clientY;}}else if(dy>30){var n=_dpub.nextElementSibling;if(n){_dpub.parentNode.insertBefore(n,_dpub);_dpubY=e.clientY;}} }
+function _upDpub(){ if(_dpub){_dpub.style.opacity='';_dpub=null;} document.removeEventListener('mousemove',_onDpub); document.removeEventListener('mouseup',_upDpub); }
+
+</script>
+</body>
+</html>
