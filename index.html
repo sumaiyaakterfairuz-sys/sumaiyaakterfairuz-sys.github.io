@@ -558,9 +558,197 @@ body.edit-mode .sec-bar{display:flex;}
 
 @media(max-width:1100px){.ri-grid{grid-template-columns:repeat(4,1fr);}}
 @media(max-width:800px){.ri-grid{grid-template-columns:1fr 1fr;}}
+
+/* ════ OWNER-ONLY SECURITY ════════════════════════════════
+   Edit bar, Add/Remove buttons hidden until password entered
+   ══════════════════════════════════════════════════════════ */
+
+/* Hide the floating edit bar completely for visitors */
+.edit-bar { display:none !important; }
+
+/* Show it only after owner unlocks */
+body.owner-mode .edit-bar { display:flex !important; }
+
+/* Hide Add Project / Add Job / Add Block / Add Publication buttons */
+.btn-outline, .add-skill-btn, [onclick*="addProj"],
+[onclick*="addJob"], [onclick*="addSkill"], [onclick*="addPub"],
+[onclick*="addGal"], [onclick*="addBlock"], [onclick*="showAddSection"],
+[onclick*="showAddBlock"] {
+  display:none !important;
+}
+body.owner-mode .btn-outline,
+body.owner-mode .add-skill-btn,
+body.owner-mode [onclick*="addProj"],
+body.owner-mode [onclick*="addJob"],
+body.owner-mode [onclick*="addSkill"],
+body.owner-mode [onclick*="addPub"],
+body.owner-mode [onclick*="addGal"],
+body.owner-mode [onclick*="addBlock"],
+body.owner-mode [onclick*="showAddSection"],
+body.owner-mode [onclick*="showAddBlock"] {
+  display:inline-block !important;
+}
+
+/* Hide red Remove buttons on project cards */
+.proj-card button[onclick*="remove"],
+button[onclick*="closest('.proj-card').remove"],
+button[onclick*=".remove()"] {
+  display:none !important;
+}
+body.owner-mode .proj-card button[onclick*="remove"],
+body.owner-mode button[onclick*="closest('.proj-card').remove"],
+body.owner-mode button[onclick*=".remove()"] {
+  display:inline-block !important;
+}
+
+/* Hide sk-del-btn (skill delete) */
+.sk-del-btn { display:none !important; }
+body.owner-mode .sk-del-btn { display:flex !important; }
+
+/* Hide section toolbars / cb-bar (block action toolbars) */
+.sec-bar, .cb-bar, .sec-ctrl-bar { display:none !important; }
+body.owner-mode.edit-mode .sec-bar { display:flex !important; }
+body.owner-mode.edit-mode .cb-bar { display:flex !important; }
+body.owner-mode.edit-mode .sec-ctrl-bar { display:flex !important; }
+
+/* Hide gallery replace/delete buttons */
+.img-up-btn { display:none !important; }
+body.owner-mode .img-up-btn { display:inline-block !important; }
+
+/* Hide photo edit overlays */
+.photo-edit-ov, .bio-photo-side-ov, .edu-photo-ov,
+.proj-img-ov, .m-img-ov { display:none !important; }
+body.owner-mode .photo-edit-ov,
+body.owner-mode .bio-photo-side-ov,
+body.owner-mode .edu-photo-ov,
+body.owner-mode .proj-img-ov,
+body.owner-mode .m-img-ov { display:flex !important; }
+
+/* ── LOCK BUTTON (always visible, bottom-right) ── */
+#owner-lock {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9100;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(11,31,51,0.75);
+  border: 1.5px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.55);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 14px rgba(0,0,0,.3);
+  transition: all .22s;
+  backdrop-filter: blur(6px);
+}
+#owner-lock:hover {
+  background: #0e7490;
+  border-color: #0e7490;
+  color: #fff;
+  transform: scale(1.08);
+}
+#owner-lock.unlocked {
+  background: #c9a84c;
+  border-color: #c9a84c;
+  color: #0b1f33;
+}
+
+/* ── PASSWORD MODAL ── */
+#pass-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+}
+.pbox {
+  background: #0b1f33;
+  border-radius: 22px;
+  padding: 44px 38px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 28px 70px rgba(0,0,0,.65);
+  border: 1px solid rgba(255,255,255,.1);
+  font-family: 'DM Sans', sans-serif;
+  animation: pboxIn .22s ease;
+}
+@keyframes pboxIn {
+  from { opacity:0; transform:scale(.93) translateY(12px); }
+  to   { opacity:1; transform:scale(1)   translateY(0);    }
+}
+.pbox-icon  { font-size: 50px; margin-bottom: 16px; line-height:1; }
+.pbox-title { font-family:'DM Serif Display',serif; font-size:24px; color:#fff; margin-bottom:6px; }
+.pbox-sub   { font-size:13px; color:rgba(255,255,255,.42); margin-bottom:28px; }
+.pbox-wrap  { position:relative; margin-bottom:16px; }
+#pass-input {
+  width: 100%;
+  background: rgba(255,255,255,.07);
+  border: 1.5px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 13px 48px 13px 18px;
+  font-family: 'DM Sans', sans-serif;
+  color: #fff;
+  outline: none;
+  transition: border .2s;
+  letter-spacing: 3px;
+}
+#pass-input:focus  { border-color: #0e7490; }
+#pass-input::placeholder { letter-spacing:0; color:rgba(255,255,255,.28); }
+.pbox-eye {
+  position:absolute; right:14px; top:50%; transform:translateY(-50%);
+  background:none; border:none; color:rgba(255,255,255,.35);
+  cursor:pointer; font-size:18px; padding:0; line-height:1;
+}
+.pbox-eye:hover { color:rgba(255,255,255,.7); }
+#pass-go {
+  width:100%; padding:13px; border-radius:12px; border:none;
+  background: linear-gradient(135deg,#0e7490,#0d9ab8);
+  color:#fff; font-size:15px; font-weight:700;
+  cursor:pointer; font-family:'DM Sans',sans-serif;
+  transition:all .22s;
+}
+#pass-go:hover { background:linear-gradient(135deg,#0d9ab8,#22a7c7); transform:translateY(-1px); }
+.pbox-err {
+  display:none; margin-top:12px; font-size:13px;
+  color:#fca5a5;
+  background:rgba(220,38,38,.12);
+  border:1px solid rgba(220,38,38,.2);
+  padding:9px 16px; border-radius:9px;
+}
+.pbox-foot { margin-top:18px; font-size:11px; color:rgba(255,255,255,.18); }
+
 </style>
 </head>
 <body>
+
+<!-- ░░ OWNER LOCK BUTTON ░░ -->
+<button id="owner-lock" onclick="showLock()" title="Owner login">&#128274;</button>
+
+<!-- ░░ PASSWORD MODAL ░░ -->
+<div id="pass-modal" onclick="if(event.target===this)hideLock()">
+  <div class="pbox">
+    <div class="pbox-icon">&#128274;</div>
+    <div class="pbox-title">Owner Access</div>
+    <div class="pbox-sub">Enter your password to unlock editing</div>
+    <div class="pbox-wrap">
+      <input type="password" id="pass-input" placeholder="Password" autocomplete="off" spellcheck="false">
+      <button class="pbox-eye" onclick="toggleEye()" tabindex="-1">&#128065;</button>
+    </div>
+    <button id="pass-go" onclick="tryPass()">&#128275;&nbsp; Unlock Editor</button>
+    <div class="pbox-err" id="pass-err">Incorrect password &mdash; try again.</div>
+    <div class="pbox-foot">&#128100; Sumaiya Akter &mdash; site owner only</div>
+  </div>
+</div>
+
 <div class="edit-bar" id="edit-bar">
   <span class="eb-lbl">Editor</span>
   <button id="eb-edit" onclick="toggleEdit()">&#9999;&#65039; Edit Mode</button>
@@ -652,7 +840,7 @@ body.edit-mode .sec-bar{display:flex;}
       </div>
       <div class="hero-contacts">
         <div class="hc">&#128205; <span data-editable>Miami, FL 33172, USA</span></div>
-        <div class="hc">&#128231; <span data-editable>sumaiyaakterfairuz@gmail.com</span></div>
+        <div class="hc">&#128231; <span data-editable><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="196a6c747870607878726d7c6b7f78706b6c63597e74787075377a7674">[email&#160;protected]</a></span></div>
         <div class="hc">&#128222; <span data-editable>+1 786-622-5568</span></div>
       </div>
     </div>
@@ -782,7 +970,7 @@ body.edit-mode .sec-bar{display:flex;}
       <div>
         <p style="font-size:15px;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:28px;max-width:380px;" data-editable>Open to graduate research opportunities, collaborations, and professional connections.</p>
         <div class="ci"><div class="ci-icon">&#128205;</div><div><span class="ci-lbl">Address</span><div class="ci-val" data-editable>10817 NW 7th St, Miami, FL 33172, USA</div></div></div>
-        <div class="ci"><div class="ci-icon">&#128231;</div><div><span class="ci-lbl">Email</span><div class="ci-val" data-editable>sumaiyaakterfairuz@gmail.com</div></div></div>
+        <div class="ci"><div class="ci-icon">&#128231;</div><div><span class="ci-lbl">Email</span><div class="ci-val" data-editable><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e6d6b737f77677f7f756a7b6c787f776c6b645e79737f7772307d7173">[email&#160;protected]</a></div></div></div>
         <div class="ci"><div class="ci-icon">&#128222;</div><div><span class="ci-lbl">Phone (USA)</span><div class="ci-val" data-editable>+1 786-622-5568</div></div></div>
         <div class="ci"><div class="ci-icon">&#128222;</div><div><span class="ci-lbl">Phone (BD)</span><div class="ci-val" data-editable>+88 0152-132-8382</div></div></div>
         <div class="ci"><div class="ci-icon">&#128300;</div><div><span class="ci-lbl">ResearchGate</span><div class="ci-val"><a href="https://www.researchgate.net/profile/Sumaiya-Akter-39" target="_blank">Sumaiya-Akter-39 &#x2197;</a></div></div></div>
@@ -807,7 +995,54 @@ body.edit-mode .sec-bar{display:flex;}
     <a href="experience.html">Experience</a> &nbsp;&middot;&nbsp;<a href="gallery.html">Gallery</a>
   </div>
 </footer>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+/* ════ OWNER PASSWORD SYSTEM ════ */
+var _PW = 'Sumaiya@2025', _unlocked = false;
+
+function showLock(){
+  if(_unlocked){ toggleEdit(); return; }
+  document.getElementById('pass-modal').style.display = 'flex';
+  setTimeout(function(){ document.getElementById('pass-input').focus(); }, 80);
+}
+function hideLock(){
+  document.getElementById('pass-modal').style.display = 'none';
+  document.getElementById('pass-input').value = '';
+  document.getElementById('pass-err').style.display = 'none';
+}
+function toggleEye(){
+  var i = document.getElementById('pass-input');
+  var b = document.querySelector('.pbox-eye');
+  i.type = (i.type === 'password') ? 'text' : 'password';
+  b.innerHTML = (i.type === 'password') ? '&#128065;' : '&#128064;';
+}
+function tryPass(){
+  var v = document.getElementById('pass-input').value;
+  if(v === _PW){
+    _unlocked = true;
+    hideLock();
+    document.body.classList.add('owner-mode');
+    var lb = document.getElementById('owner-lock');
+    if(lb){ lb.innerHTML='&#9999;&#65039;'; lb.classList.add('unlocked'); lb.title='Toggle edit mode'; }
+    if(typeof toggleEdit === 'function') toggleEdit();
+  } else {
+    var err = document.getElementById('pass-err');
+    err.style.display = 'block';
+    var inp = document.getElementById('pass-input');
+    inp.style.borderColor = '#dc2626';
+    inp.value = ''; inp.focus();
+    setTimeout(function(){ inp.style.borderColor = 'rgba(255,255,255,.18)'; }, 1600);
+  }
+}
+document.addEventListener('keydown', function(e){
+  var m = document.getElementById('pass-modal');
+  if(m && m.style.display === 'flex'){
+    if(e.key === 'Enter') tryPass();
+    if(e.key === 'Escape') hideLock();
+  }
+});
+/* ════════════════════════════════ */
+
+</script><script>
 /* NAV */
 window.addEventListener('scroll',function(){var n=document.getElementById('main-nav');if(n)n.classList.toggle('scrolled',window.scrollY>10);});
 document.addEventListener('DOMContentLoaded',function(){
@@ -973,13 +1208,4 @@ function savePage(){
   if(EDIT)toggleEdit();
   setTimeout(function(){
     var clone=document.documentElement.cloneNode(true);
-    ['#edit-bar','#img-modal','#sec-modal','#_toast'].forEach(function(sel){var el=clone.querySelector(sel);if(el)el.remove();});
-    clone.querySelectorAll('.sec-bar').forEach(function(el){el.remove();});
-    var blob=new Blob(['<!DOCTYPE html>\n'+clone.outerHTML],{type:'text/html'});
-    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();
-    setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
-  },300);
-}
-</script>
-</body>
-</html>
+    ['#edit-bar','#img-modal','#sec-modal','#_toast'].forEach(function(sel){var el=clone.querySelector(sel);if(el)el.remove
